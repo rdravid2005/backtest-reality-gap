@@ -83,3 +83,24 @@ The one-minute delay weakened the strategy, but the five-minute and ten-minute d
 This suggests that delayed entry is not automatically harmful. In this implementation, longer delays may filter out noisy immediate breakouts or create better entry timing.
 
 The next test should require price to still be above the opening range high at the delayed entry time. That will help separate true breakout confirmation from accidental pullback behavior.
+## Ten-Minute Delay With Breakout Still Valid
+
+The next test kept the ten-minute entry delay but required price to still be above the opening range high at the delayed entry time.
+
+This performed much worse than the unrestricted ten-minute delay.
+
+CAGR fell to 4.489%, Sharpe fell to 0.045, Sortino fell to 0.040, net profit fell to 31.857%, and max drawdown rose to 21.900%.
+
+This suggests that the strong EXP-004 result was probably not caused by clean breakout confirmation.
+
+Instead, the unrestricted ten-minute delay may have changed the strategy into something closer to a post-breakout pullback or delayed-entry behavior. In other words, the code was not simply modeling worse execution; it was changing the trading rule.
+
+## Updated Interpretation
+
+The delay experiments show that execution assumptions and strategy logic can overlap.
+
+A one-minute delay weakened the strategy, which supports execution sensitivity.
+
+A five-minute and ten-minute delay improved performance, but the follow-up test showed that the improvement was not simply because price stayed strongly above the breakout level.
+
+This is an important backtest-to-reality lesson: small implementation details can create very different strategies, and a researcher must understand exactly what the code is doing before interpreting the result.
