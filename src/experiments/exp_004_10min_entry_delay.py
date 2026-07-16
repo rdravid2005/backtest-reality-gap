@@ -26,7 +26,7 @@ class BacktestRealityGap(QCAlgorithm):
         self.symbol = self.add_equity("QQQ", Resolution.MINUTE).symbol
 
         self.opening_range_minutes = 5
-        self.entry_delay_minutes = 1
+        self.entry_delay_minutes = 10
 
         self.opening_range_high = None
         self.opening_range_low = None
