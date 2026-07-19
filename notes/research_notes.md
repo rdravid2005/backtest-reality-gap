@@ -104,3 +104,40 @@ A one-minute delay weakened the strategy, which supports execution sensitivity.
 A five-minute and ten-minute delay improved performance, but the follow-up test showed that the improvement was not simply because price stayed strongly above the breakout level.
 
 This is an important backtest-to-reality lesson: small implementation details can create very different strategies, and a researcher must understand exactly what the code is doing before interpreting the result.
+## Five Basis Point Slippage Stress Test
+
+The first explicit slippage test added 5 basis points of slippage per order.
+
+This had a severe impact on the strategy.
+
+The clean baseline had a CAGR of 7.738%, Sharpe of 0.224, net profit of 59.896%, and max drawdown of 16.100%.
+
+With 5 bps slippage per order, CAGR fell to -12.681%, Sharpe fell to -0.882, net profit fell to -57.428%, and max drawdown rose to 60.800%.
+
+This result shows how dangerous high turnover can be when the underlying edge is weak. A small-looking per-order friction becomes large when applied across 2,636 orders.
+
+However, 5 bps per order may be a harsh assumption for QQQ, so this should be treated as a stress test rather than the only realistic slippage case.
+
+The next step is to test smaller slippage assumptions such as 1 bps and 2 bps.
+## One Basis Point Slippage
+
+The next slippage test added 1 basis point of slippage per order.
+
+This was much less severe than the 5 bps stress test, but it still significantly weakened the strategy.
+
+CAGR fell from 7.738% in the clean baseline to 3.338%. Net profit fell from 59.896% to 23.003%. Sharpe fell from 0.224 to -0.009, and Sortino fell from 0.225 to -0.009. Max drawdown increased from 16.100% to 21.400%.
+
+This is a major result for the project. Even a small per-order friction meaningfully damaged the QQQ 5-minute ORB because the strategy trades frequently and has a weak baseline edge.
+
+The strategy remained positive on net profit, but its risk-adjusted performance effectively disappeared.
+## Two Basis Point Slippage
+
+The 2 bps slippage test pushed the strategy into negative territory.
+
+CAGR fell from 7.738% in the clean baseline to -0.886%. Net profit fell from 59.896% to -5.457%. Sharpe fell from 0.224 to -0.234, and max drawdown increased from 16.100% to 26.900%.
+
+This is one of the strongest findings so far.
+
+The clean QQQ 5-minute ORB looked positive before additional slippage, but it could not survive modest execution friction. At 1 bps, risk-adjusted performance disappeared. At 2 bps, the strategy became negative.
+
+This supports the project hypothesis that short-horizon, high-turnover strategies with weak baseline edge can be highly sensitive to small per-order frictions.
