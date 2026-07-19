@@ -141,3 +141,14 @@ This is one of the strongest findings so far.
 The clean QQQ 5-minute ORB looked positive before additional slippage, but it could not survive modest execution friction. At 1 bps, risk-adjusted performance disappeared. At 2 bps, the strategy became negative.
 
 This supports the project hypothesis that short-horizon, high-turnover strategies with weak baseline edge can be highly sensitive to small per-order frictions.
+## Ten-Minute Delay With One Basis Point Slippage
+
+The final test combined the strongest delayed-entry version with 1 basis point of slippage per order.
+
+The unrestricted ten-minute delay had previously produced the strongest result, with CAGR of 11.154%, Sharpe of 0.410, net profit of 94.629%, and max drawdown of 12.000%.
+
+After adding 1 bps slippage, CAGR fell to 6.610%, Sharpe fell to 0.165, Sortino fell to 0.168, and net profit fell to 49.720%. Max drawdown increased to 14.800%.
+
+This version still performed better than the original baseline with 1 bps slippage, but it was much weaker than the no-slippage delayed-entry result.
+
+This is a strong final project finding. Better strategy logic can improve resilience, but execution friction still materially reduces performance.
